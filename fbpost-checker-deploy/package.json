@@ -1,0 +1,13 @@
+{
+  "name": "fbpost-checker-deploy",
+  "version": "1.0.0",
+  "description": "Firebase deploy with auto-backup",
+  "main": "index.js",
+  "scripts": {
+    "backup": "node backup.js",
+    "deploy": "npm run backup && firebase deploy"
+  },
+  "dependencies": {
+    "archiver": "^7.0.1"
+  }
+}
