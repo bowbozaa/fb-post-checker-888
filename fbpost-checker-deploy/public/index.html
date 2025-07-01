@@ -1,72 +1,92 @@
+<!-- index.html -->
 <!DOCTYPE html>
 <html lang="th">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>FB Post Checker 888 - หน้าแรก</title>
+  <title>FB Post Checker</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     body {
-      font-family: 'Arial', sans-serif;
-      background: #fefefe;
-      margin: 0;
-      padding: 0;
-      text-align: center;
-    }
-    header {
-      background-color: #f35b5b;
-      color: white;
-      padding: 20px 0;
-    }
-    h1 {
-      margin: 0;
-    }
-    .menu-container {
-      margin: 50px auto;
-      display: grid;
-      gap: 20px;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      max-width: 800px;
-      padding: 0 20px;
-    }
-    .menu-item {
-      background-color: #fff3f3;
-      border: 2px solid #f35b5b;
-      padding: 30px 20px;
-      border-radius: 15px;
-      box-shadow: 0 0 10px #f3d3d3;
-      text-decoration: none;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      padding: 40px 20px;
+      max-width: 700px;
+      margin: auto;
+      background: linear-gradient(to bottom, #ffffff, #f0f4f8);
       color: #333;
-      font-weight: bold;
-      transition: all 0.2s ease-in-out;
     }
-    .menu-item:hover {
-      background-color: #ffe0e0;
-      transform: scale(1.03);
+    h2 {
+      text-align: center;
+      color: #2c3e50;
+      margin-bottom: 20px;
     }
-    footer {
-      margin-top: 50px;
-      color: #aaa;
-      font-size: 14px;
+    textarea {
+      width: 100%;
+      font-size: 1.1rem;
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      box-sizing: border-box;
+      resize: vertical;
+    }
+    button {
+      background-color: #3498db;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      font-size: 1rem;
+      border-radius: 6px;
+      margin-top: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    button:hover {
+      background-color: #2980b9;
+    }
+    h3 {
+      margin-top: 30px;
+      color: #34495e;
+    }
+    pre {
+      background-color: #ecf0f1;
+      padding: 15px;
+      border-left: 4px solid #3498db;
+      border-radius: 6px;
+      white-space: pre-wrap;
+      font-size: 0.95rem;
     }
   </style>
 </head>
 <body>
+  <h2>FB Post Checker 🔍</h2>
+  <textarea id="content" rows="6" placeholder="วางโพสต์ที่ต้องการตรวจสอบ..."></textarea><br>
+  <button onclick="sendPost()">ส่งโพสต์ให้ AI ตรวจสอบ</button>
 
-  <header>
-    <h1>FB Post Checker 888</h1>
-    <p>ระบบวิเคราะห์โพสต์สายเทาอัตโนมัติด้วย AI</p>
-  </header>
+  <h3>ผลลัพธ์:</h3>
+  <pre id="result">ยังไม่มีผลลัพธ์</pre>
 
-  <div class="menu-container">
-    <a href="/login.html" class="menu-item">🔐 เข้าสู่ระบบ</a>
-    <a href="/form.html" class="menu-item">📝 วิเคราะห์โพสต์</a>
-    <a href="/dashboard.html" class="menu-item">📊 ดูผลลัพธ์ทั้งหมด</a>
-    <a href="https://facebook.com" target="_blank" class="menu-item">🌐 ไปที่ Facebook</a>
-  </div>
+  <script>
+    async function sendPost() {
+      const content = document.getElementById('content').value;
+      const result = document.getElementById('result');
 
-  <footer>
-    © 2025 FB Post Checker 888 by Mossed AI & Jarvis
-  </footer>
+      if (!content.trim()) {
+        result.textContent = "กรุณาใส่ข้อความก่อนส่ง";
+        return;
+      }
 
+      try {
+        const res = await fetch("https://bkk06.easywithai.co/webhook-test/fb-post-checker", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ content: content })
+        });
+
+        const json = await res.json();
+        result.textContent = JSON.stringify(json, null, 2);
+      } catch (err) {
+        result.textContent = "เกิดข้อผิดพลาด: " + err.message;
+      }
+    }
+  </script>
 </body>
 </html>
