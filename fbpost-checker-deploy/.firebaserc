@@ -1,7 +1,5 @@
 {
   "projects": {
-    "default": "fb-post-checker888"
-  },
-  "targets": {},
-  "etags": {}
+    "default": "fb-post-checker-888"
+  }
 }
