@@ -26,4 +26,4 @@ jobs:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
         run: |
           cd fbpost-checker-deploy
-          firebase deploy --only hosting
+          firebase deploy --only hosting --project fb-post-checker-888
