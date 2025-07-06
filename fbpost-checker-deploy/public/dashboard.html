@@ -1,65 +1,30 @@
 <!DOCTYPE html>
-<html lang="th">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>ดูโพสต์ทั้งหมด</title>
-  <style>
-    body {
-      background-color: #f4faff;
-      font-family: sans-serif;
-      padding: 2em;
-    }
-    h2 {
-      color: #1976d2;
-      text-align: center;
-    }
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 1em;
-    }
-    th, td {
-      padding: 0.8em;
-      border: 1px solid #ccc;
-      text-align: left;
-      font-size: 0.9em;
-    }
-    th {
-      background-color: #1976d2;
-      color: white;
-    }
-    tr:nth-child(even) {
-      background-color: #e9f2fb;
-    }
-    .center {
-      text-align: center;
-    }
-  </style>
-  <script src="config.js"></script>
-  <script src="dashboard.js"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Admin Dashboard - FB Post Checker 888</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <h2>📰 โพสต์ทั้งหมด</h2>
-  <table id="postTable">
-    <thead>
-      <tr>
-        <th>เวลา</th>
-        <th>ชื่อ</th>
-        <th>รหัส</th>
-        <th>ทีม</th>
-        <th>ตำแหน่ง</th>
-        <th>คีย์เวิร์ด</th>
-        <th>ประเภท</th>
-        <th>สิทธิ์</th>
-        <th>ลิงก์</th>
-        <th>ข้อความ</th>
-        <th>ความเสี่ยง</th>
-        <th>ข้อเสนอแนะ</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr><td colspan="12" class="center">⏳ กำลังโหลดข้อมูล...</td></tr>
-    </tbody>
-  </table>
+  <div class="container">
+    <h1>📋 Admin Dashboard</h1>
+    <table id="postTable">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Post Content</th>
+          <th>Policy Violation</th>
+          <th>Risk Level</th>
+          <th>Checked At</th>
+        </tr>
+      </thead>
+      <tbody id="tableBody">
+        <!-- Data rows will be inserted here -->
+      </tbody>
+    </table>
+  </div>
+
+  <script src="dashboard.js"></script>
 </body>
 </html>
