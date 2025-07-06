@@ -1,3 +1,18 @@
 
-firebase deploy --only hosting --project fb-post-checker-888
+name: Deploy to Firebase Hosting
 
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
+          repoToken: "${{ secrets.GITHUB_TOKEN }}"
+          firebaseServiceAccount: "${{ secrets.FIREBASE_SERVICE_ACCOUNT_FB_POST_CHECKER888 }}"
+          projectId: fb-post-checker888
+          channelId: live
