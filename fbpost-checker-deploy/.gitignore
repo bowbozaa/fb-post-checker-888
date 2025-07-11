@@ -62,12 +62,3 @@ OneDrive/
 Music/
 Desktop/
 Dropbox/
-# เพิ่ม .gitignore เข้า git
-git add .gitignore
-
-# commit การเปลี่ยนแปลง
-git commit -m "Update .gitignore to exclude system and build files"
-
-# push ขึ้น GitHub
-git push
-
