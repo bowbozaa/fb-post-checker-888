@@ -5,9 +5,13 @@
   "main": "index.js",
   "scripts": {
     "backup": "node backup.js",
-    "deploy": "npm run backup && firebase deploy"
+    "deploy": "npm run backup && firebase deploy",
+    "test": "jest"
   },
   "dependencies": {
     "archiver": "^7.0.1"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0"
   }
 }
