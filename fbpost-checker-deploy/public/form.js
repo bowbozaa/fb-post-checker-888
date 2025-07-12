@@ -1,4 +1,4 @@
-document.getElementById("submitBtn").addEventListener("click", submitForm);
+document.getElementById("postForm").addEventListener("submit", submitForm);
 
 async function submitForm(e) {
   e.preventDefault();
