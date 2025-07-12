@@ -16,3 +16,6 @@ cd fbpost-checker-deploy && npm install
 npm run backup
 npm run deploy
 ```
+
+## การทดสอบ
+cd fbpost-checker-deploy && npm test
