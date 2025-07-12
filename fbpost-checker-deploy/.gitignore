@@ -62,3 +62,7 @@ OneDrive/
 Music/
 Desktop/
 Dropbox/
+
+# Backup archives
+backups/
+*.zip
