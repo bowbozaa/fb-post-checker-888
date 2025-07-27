@@ -1,25 +1,21 @@
-document.getElementById("loginForm").addEventListener("submit", async function (e) {
-  e.preventDefault();
+const SHEET_API_URL = 'https://script.google.com/macros/s/AKfycby-6r7AHEqFeJNpM_vDL1vYd2q2-P13z71FyBfrgtbCzQTVIa-X3aczyc4-y2-6IsM0/exec';
 
-  const user = document.getElementById("user").value.trim();
-  const pass = document.getElementById("pass").value.trim();
-  const errorElem = document.getElementById("error");
-
-  try {
-    const url = `${GAS_BASE_URL}?action=login&user=${encodeURIComponent(user)}&pass=${encodeURIComponent(pass)}&v=${Date.now()}`; // ป้องกัน cache ด้วย timestamp
-
-    const res = await fetch(url, {
-      method: "GET",
-      cache: "no-store"  // 💥 บังคับไม่ให้ใช้ cache
+fetch(SHEET_API_URL)
+  .then(res => res.json())
+  .then(data => {
+    const tableBody = document.getElementById('tableBody');
+    data.reverse().forEach((item, index) => {
+      const row = document.createElement('tr');
+      row.innerHTML = `
+        <td>${index + 1}</td>
+        <td>${item.post}</td>
+        <td>${item.violation}</td>
+        <td>${item.risk}</td>
+        <td>${item.timestamp}</td>
+      `;
+      tableBody.appendChild(row);
     });
-
-    const data = await res.json();
-    if (data.result === "success") {
-      window.location.href = "form.html";
-    } else {
-      errorElem.textContent = "❌ รหัสผ่านหรือผู้ใช้ไม่ถูกต้อง";
-    }
-  } catch (error) {
-    errorElem.textContent = "❌ เกิดข้อผิดพลาด: " + error.message;
-  }
-});
+  })
+  .catch(err => {
+    console.error('Error loading data:', err);
+  });
